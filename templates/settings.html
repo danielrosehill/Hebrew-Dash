@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <style>
+      .page { max-width: 720px; margin: 24px auto; padding: 16px; background: #151923; border-radius: 12px; }
+      .row { display:flex; gap: 12px; align-items:center; }
+      .btn { display:inline-block; padding:8px 12px; background:#4e86ff; color:#fff; border-radius:8px; text-decoration:none; }
+      label { display:block; margin-top: 12px; color: #9aa0a6; }
+      input[type=text] { width: 100%; padding:8px; border-radius:8px; border:1px solid #2a3142; background:#0f1115; color:#e6e6e6; }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <h2>Settings</h2>
+      <p>Connect Google accounts with labels. After connecting, mappings are saved locally.</p>
+
+      <div class="row">
+        <div style="flex:1">
+          <div class="label">Personal</div>
+          <div>{{ cfg.personal or 'Not set' }}</div>
+        </div>
+        <a class="btn" href="/auth/google?label=personal">Connect Personal</a>
+      </div>
+
+      <div class="row" style="margin-top:8px">
+        <div style="flex:1">
+          <div class="label">Business</div>
+          <div>{{ cfg.business or 'Not set' }}</div>
+        </div>
+        <a class="btn" href="/auth/google?label=business">Connect Business</a>
+      </div>
+
+      <form method="post" style="margin-top:16px">
+        <div style="margin-bottom:20px; padding:12px; background:#1a1f2a; border-radius:8px; border-left:4px solid #4e86ff">
+          <div class="label" style="color:#4e86ff; font-weight:bold">OAuth Credentials</div>
+          <p style="margin:4px 0; font-size:0.9em; color:#9aa0a6">
+            Current source: 
+            {% if current_oauth.client_id == fallback_client_id %}
+              <span style="color:#ff6b6b">Fallback (hardcoded)</span>
+            {% elif user_creds.client_id %}
+              <span style="color:#4ecdc4">Memory (temporary)</span>
+            {% elif cfg.google_client_id %}
+              <span style="color:#95e1d3">Config file</span>
+            {% else %}
+              <span style="color:#ffd93d">File</span>
+            {% endif %}
+          </p>
+          <p style="margin:4px 0 12px 0; font-size:0.8em; color:#666">Client ID: {{ current_oauth.client_id[:20] }}...</p>
+          
+          <label for="google_client_id">Google Client ID</label>
+          <input id="google_client_id" name="google_client_id" type="text" 
+                 value="{{ cfg.google_client_id or '' }}" 
+                 placeholder="Enter your Google OAuth Client ID" />
+          
+          <label for="google_client_secret">Google Client Secret</label>
+          <input id="google_client_secret" name="google_client_secret" type="text" 
+                 value="{{ cfg.google_client_secret or '' }}" 
+                 placeholder="Enter your Google OAuth Client Secret" />
+          
+          <label for="google_project_id">Google Project ID (optional)</label>
+          <input id="google_project_id" name="google_project_id" type="text" 
+                 value="{{ cfg.google_project_id or '' }}" 
+                 placeholder="Enter your Google Project ID" />
+          
+          <p style="margin:8px 0; font-size:0.8em; color:#666">
+            Leave blank to use fallback credentials. Changes are saved to config file and persist across restarts.
+          </p>
+        </div>
+
+        <label for="waqi_token">WAQI Token (optional, for PM2.5/AQI)</label>
+        <input id="waqi_token" name="waqi_token" type="text" value="{{ cfg.waqi_token or '' }}" placeholder="Enter token" />
+
+        <div style="margin-top:16px">
+          <div class="label">Hebrew Date Display</div>
+          <div class="row" style="margin-top:8px">
+            <label style="display:inline-flex; align-items:center; gap:6px">
+              <input type="radio" name="hebrew_date_language" value="english" {% if cfg.hebrew_date_language != 'hebrew' %}checked{% endif %}/> English (22 Elul 5785)
+            </label>
+            <label style="display:inline-flex; align-items:center; gap:6px">
+              <input type="radio" name="hebrew_date_language" value="hebrew" {% if cfg.hebrew_date_language == 'hebrew' %}checked{% endif %}/> Hebrew (כ״ב אלול תשפ״ה)
+            </label>
+          </div>
+        </div>
+
+        <div style="margin-top:8px"><button class="btn" type="submit">Save</button></div>
+      </form>
+
+      <div style="margin-top:20px">
+        <a class="btn" href="/">Back to Dashboard</a>
+      </div>
+    </div>
+  </body>
+  </html>

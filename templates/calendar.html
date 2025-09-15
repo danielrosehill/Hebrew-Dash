@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <a href="/settings" style="position:fixed; top:8px; right:12px; color:#9aa0a6; text-decoration:none">Settings</a>
+    <div id="grid" style="grid-template-columns: 1fr; grid-template-rows: auto 1fr 1fr;">
+      <section class="card" id="next-meeting-card">
+        <div class="label">Next Meeting</div>
+        <div id="next-meeting-calendar" class="next-meeting-highlight">
+          <div id="meeting-title-calendar" class="title">—</div>
+          <div id="meeting-in-calendar" class="meta">—</div>
+        </div>
+      </section>
+      
+      <section class="card" id="calendar-three-day-page">
+        <div class="label">Calendar — Next 3 Days</div>
+        <div id="three-day-grid" class="three-day-grid"></div>
+      </section>
+      
+      <section class="card" id="israel-holidays-page">
+        <div class="label">Israel Public Holidays — Next 10</div>
+        <div id="holidays-grid" class="holidays-grid"></div>
+      </section>
+    </div>
+
+    {% include "_bottom_nav.html" %}
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>
+

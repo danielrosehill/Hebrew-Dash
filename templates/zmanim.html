@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <a href="/settings" style="position:fixed; top:8px; right:12px; color:#9aa0a6; text-decoration:none">Settings</a>
+    <div id="grid" style="grid-template-columns: 1fr; grid-template-rows: 1fr;">
+      <section id="zmanim-full-card" class="card">
+        <div class="label">Zmanim & Shabbat - Jerusalem</div>
+        
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+          <button class="tab-button active" data-tab="zmanim-tab">Zmanim</button>
+          <button class="tab-button" data-tab="shabbat-tab">Shabbat</button>
+        </div>
+        
+        <div class="zmanim-full-container">
+          <!-- Zmanim Tab Content -->
+          <div id="zmanim-tab" class="tab-content active">
+            <div class="zmanim-section-full">
+              <div class="zmanim-header">
+                <div class="sub">Today's Prayer Times</div>
+                <div class="zmanim-date" id="zmanim-date-display">—</div>
+                <div class="zmanim-hebrew-date" id="zmanim-hebrew-date">—</div>
+              </div>
+              <div class="zmanim-grid">
+                <div class="zmanim-column">
+                  <div class="zmanim-group">
+                    <div class="zmanim-group-title">Morning</div>
+                    <div class="zmanim-row-full">
+                      <span class="zmanim-label-full">Alot HaShachar</span>
+                      <span class="zmanim-time-full" id="zmanim-alot-full">—</span>
+                    </div>
+                    <div class="zmanim-row-full">
+                      <span class="zmanim-label-full">Sunrise</span>
+                      <span class="zmanim-time-full" id="zmanim-sunrise-full">—</span>
+                    </div>
+                    <div class="zmanim-row-full">
+                      <span class="zmanim-label-full">Latest Shema (GRA)</span>
+                      <span class="zmanim-time-full" id="zmanim-shema-full">—</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="zmanim-column">
+                  <div class="zmanim-group">
+                    <div class="zmanim-group-title">Afternoon & Evening</div>
+                    <div class="zmanim-row-full">
+                      <span class="zmanim-label-full">Mincha Gedola</span>
+                      <span class="zmanim-time-full" id="zmanim-mincha-gedola-full">—</span>
+                    </div>
+                    <div class="zmanim-row-full">
+                      <span class="zmanim-label-full">Plag HaMincha</span>
+                      <span class="zmanim-time-full" id="zmanim-plag-full">—</span>
+                    </div>
+                    <div class="zmanim-row-full">
+                      <span class="zmanim-label-full">Sunset</span>
+                      <span class="zmanim-time-full" id="zmanim-sunset-full">—</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Shabbat Tab Content -->
+          <div id="shabbat-tab" class="tab-content">
+            <div class="shabbat-section-full">
+              <div class="shabbat-header-full">
+                <div class="parsha-display">
+                  <div class="parsha-label">This Week's Parsha</div>
+                  <div class="parsha-name-large" id="zmanim-parsha-full">—</div>
+                </div>
+                <div class="shabbat-times-display">
+                  <div class="shabbat-time-item">
+                    <div class="shabbat-time-label">Candle Lighting</div>
+                    <div class="shabbat-time-value" id="zmanim-candle-full">—</div>
+                  </div>
+                  <div class="shabbat-time-item">
+                    <div class="shabbat-time-label">Havdalah</div>
+                    <div class="shabbat-time-value" id="zmanim-havdalah-full">—</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    {% include "_bottom_nav.html" %}
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>

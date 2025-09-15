@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <a href="/settings" style="position:fixed; top:8px; right:12px; color:#9aa0a6; text-decoration:none">Settings</a>
+    <div id="grid">
+      <section id="clock" class="card">
+        <div class="row center">
+          <div class="time-block">
+            <div id="time-local" class="time">--:--</div>
+            <div class="label subtler">Local</div>
+          </div>
+          <div class="time-block">
+            <div id="time-utc" class="time">--:--</div>
+            <div class="label subtler">UTC</div>
+          </div>
+        </div>
+        <div class="combined-date" id="combined-date">—</div>
+        <div id="week-indicator" class="week-indicator" style="display: none;">
+          <div class="week-days">
+            <div class="day-item">
+              <span class="day-dot"></span>
+              <span class="day-label">S</span>
+            </div>
+            <div class="day-item">
+              <span class="day-dot"></span>
+              <span class="day-label">M</span>
+            </div>
+            <div class="day-item">
+              <span class="day-dot"></span>
+              <span class="day-label">T</span>
+            </div>
+            <div class="day-item">
+              <span class="day-dot"></span>
+              <span class="day-label">W</span>
+            </div>
+            <div class="day-item">
+              <span class="day-dot"></span>
+              <span class="day-label">T</span>
+            </div>
+            <div class="day-item">
+              <span class="day-dot"></span>
+              <span class="day-label">F</span>
+            </div>
+            <div class="day-item">
+              <span class="day-dot"></span>
+              <span class="day-label">S</span>
+            </div>
+          </div>
+        </div>
+        <div id="shabbat-clock" style="display:none; margin-top:8px">
+          <div class="label collapsible-header" onclick="toggleShabbatTimes()" style="cursor: pointer; user-select: none;">Shabbat Times <span id="shabbat-toggle">▶</span></div>
+          <div id="shabbat-content" class="collapsible-content" style="display: none;">
+          <div class="mini-grid" style="grid-template-columns: repeat(2, 1fr);">
+            <div class="mini">
+              <div class="sub">Candle</div>
+              <div class="metric" id="sh-in">—</div>
+            </div>
+            <div class="mini">
+              <div class="sub">Havdalah</div>
+              <div class="metric" id="sh-out">—</div>
+            </div>
+          </div>
+          <div class="mini-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 8px;">
+            <div class="mini">
+              <div class="sub">Parsha</div>
+              <div class="metric" id="sh-parsha">—</div>
+            </div>
+            <div class="mini">
+              <div class="sub">Next Holiday</div>
+              <div class="metric" id="sh-holiday">—</div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="emails" class="card">
+        <div class="label">Inbox</div>
+        <div class="tabs" id="email-tabs"></div>
+        <ul id="email-list" class="list"></ul>
+      </section>
+
+      <section id="calendar-zmanim-section" class="card">
+        <div class="section-toggle">
+          <button class="toggle-btn active" id="calendar-toggle" onclick="showCalendar()">Calendar</button>
+          <button class="toggle-btn" id="zmanim-toggle-btn" onclick="showZmanim()">Zmanim</button>
+        </div>
+        
+        <!-- Calendar View -->
+        <div id="calendar-view" class="toggle-content">
+          <div class="tabs" id="cal-tabs"></div>
+          <div id="next-meeting" class="next-meeting-highlight">
+            <div class="next-meeting-label">Next Meeting</div>
+            <div id="meeting-title" class="title">—</div>
+            <div id="meeting-in" class="meta">—</div>
+          </div>
+          <div class="columns">
+            <div>
+              <div class="sub">Today</div>
+              <ul id="agenda-today" class="list"></ul>
+            </div>
+            <div>
+              <div class="sub">Tomorrow</div>
+              <ul id="agenda-tomorrow" class="list"></ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Zmanim View -->
+        <div id="zmanim-view" class="toggle-content" style="display: none;">
+          <div class="zmanim-container">
+            <!-- Daily Zmanim Section (Primary) -->
+            <div class="zmanim-section">
+              <div class="sub" style="margin-bottom: 12px;">Daily Prayer Times</div>
+              <div class="zmanim-times">
+                <div class="zmanim-row">
+                  <span class="zmanim-label">Alot HaShachar</span>
+                  <span class="zmanim-time" id="zmanim-alot">—</span>
+                </div>
+                <div class="zmanim-row">
+                  <span class="zmanim-label">Sunrise</span>
+                  <span class="zmanim-time" id="zmanim-sunrise">—</span>
+                </div>
+                <div class="zmanim-row">
+                  <span class="zmanim-label">Shema (GRA)</span>
+                  <span class="zmanim-time" id="zmanim-shema">—</span>
+                </div>
+                <div class="zmanim-row">
+                  <span class="zmanim-label">Tefillah (GRA)</span>
+                  <span class="zmanim-time" id="zmanim-tefillah">—</span>
+                </div>
+                <div class="zmanim-row">
+                  <span class="zmanim-label">Chatzot</span>
+                  <span class="zmanim-time" id="zmanim-chatzot">—</span>
+                </div>
+                <div class="zmanim-row">
+                  <span class="zmanim-label">Mincha Gedola</span>
+                  <span class="zmanim-time" id="zmanim-mincha-gedola">—</span>
+                </div>
+                <div class="zmanim-row">
+                  <span class="zmanim-label">Mincha Ketana</span>
+                  <span class="zmanim-time" id="zmanim-mincha-ketana">—</span>
+                </div>
+                <div class="zmanim-row">
+                  <span class="zmanim-label">Sunset</span>
+                  <span class="zmanim-time" id="zmanim-sunset">—</span>
+                </div>
+                <div class="zmanim-row">
+                  <span class="zmanim-label">Tzeit HaKochavim</span>
+                  <span class="zmanim-time" id="zmanim-tzeit">—</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Shabbat Info Section (Collapsible) -->
+            <div class="shabbat-section" style="margin-top: 16px;">
+              <div class="label collapsible-header" onclick="toggleShabbatInfo()" style="cursor: pointer; user-select: none; font-size: 0.9em; margin-bottom: 8px;">
+                Next Shabbat <span id="shabbat-info-toggle">▶</span>
+              </div>
+              <div id="shabbat-info-content" class="collapsible-content" style="display: none;">
+                <div class="shabbat-header">
+                  <div class="parsha-name" id="zmanim-parsha">—</div>
+                </div>
+                <div class="mini-grid" style="grid-template-columns: repeat(2, 1fr);">
+                  <div class="mini">
+                    <div class="sub">Candle Lighting</div>
+                    <div class="metric" id="zmanim-candle">—</div>
+                  </div>
+                  <div class="mini">
+                    <div class="sub">Havdalah</div>
+                    <div class="metric" id="zmanim-havdalah">—</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="news-alerts-row">
+        <section id="updates" class="card news-card">
+          <div class="label">News</div>
+          <div id="news-container" class="news-container">
+            <ul id="news-list" class="list scrollable-news"></ul>
+          </div>
+        </section>
+
+        <section id="red-alert" class="card alert-card">
+          <div class="label">Red Alert</div>
+          <div id="alert-status" class="alert-status">
+            <div class="alert-indicator" id="alert-indicator">
+              <div class="status-dot" id="status-dot"></div>
+              <div class="status-text" id="status-text">Checking...</div>
+            </div>
+            <div class="last-updated" id="last-updated">—</div>
+          </div>
+          <div id="alert-details" class="alert-details">
+            <div class="alert-locations" id="alert-locations"></div>
+            <div class="alert-count" id="alert-count">—</div>
+          </div>
+        </section>
+      </div>
+
+      <section id="weather-card" class="card">
+        <div class="label">Weather & Air Quality</div>
+        <div class="mini-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="mini">
+            <div class="sub">Current</div>
+            <div class="metric"><span id="wx-temp">--</span><span class="unit">°C</span></div>
+          </div>
+          <div class="mini">
+            <div class="sub">High Today</div>
+            <div class="metric"><span id="wx-today-max">--</span><span class="unit">°C</span></div>
+          </div>
+          <div class="mini">
+            <div class="sub">PM2.5</div>
+            <div class="metric"><span id="pm25">—</span> <span id="pm25-desc" class="badge">—</span></div>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="video-card" class="card">
+        <div class="label">Video Cam</div>
+        <div class="row" style="gap:8px; margin-bottom:6px">
+          <button class="btn-ghost" id="vid-toggle">Toggle On</button>
+          <button class="btn-ghost" id="vid-mute">Mute</button>
+          <button class="btn-ghost" id="vid-zoom">Zoom</button>
+          <button class="btn-ghost" id="vid-full">Fullscreen</button>
+          <button class="btn-ghost" id="vid-open">Open</button>
+        </div>
+        <div id="video-wrap" class="video-wrap">
+          <div id="video-room-overlay" class="video-room-overlay">
+            <div id="video-tabs" class="video-room-tabs"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Red Alert Bottom Overlay -->
+    <div id="red-alert-overlay" class="red-alert-overlay">
+      <div class="alert-content">
+        <span class="alert-label">RED ALERT:</span>
+        <span id="alert-latest">No recent alerts</span>
+      </div>
+    </div>
+
+
+    {% include "_bottom_nav.html" %}
+    <script src="/static/js/app.js"></script>
+  </body>
+  </html>

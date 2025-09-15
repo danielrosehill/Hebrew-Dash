@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <style>
+      .news-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      
+      .news-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      
+      .news-header h1 {
+        color: #e8eaed;
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+      
+      .news-header p {
+        color: #9aa0a6;
+        font-size: 14px;
+      }
+      
+      .news-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        width: 100%;
+      }
+      
+      .news-item {
+        background: #1f1f1f;
+        border-radius: 8px;
+        padding: 20px;
+        border: 1px solid #333;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+      
+      .news-item:hover {
+        border-color: #555;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+      
+      .news-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #e8eaed;
+        margin-bottom: 12px;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      
+      .news-meta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+      }
+      
+      .news-source {
+        background: #8ab4f8;
+        color: #1f1f1f;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+      
+      .news-time {
+        color: #9aa0a6;
+        font-size: 14px;
+      }
+      
+      .news-summary {
+        color: #bdc1c6;
+        font-size: 14px;
+        line-height: 1.5;
+        margin-top: 8px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      
+      .loading {
+        text-align: center;
+        color: #9aa0a6;
+        padding: 40px;
+        grid-column: 1 / -1;
+      }
+      
+      @media (max-width: 768px) {
+        .news-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="/settings" style="position:fixed; top:8px; right:12px; color:#9aa0a6; text-decoration:none; z-index: 1000;">Settings</a>
+    
+    <div class="news-container">
+      <div class="news-header">
+        <h1>Latest News</h1>
+        <p>Stay updated with the latest stories from Israel and around the world</p>
+      </div>
+      
+      <div id="news-grid" class="news-grid">
+        <div class="loading">Loading latest news...</div>
+      </div>
+    </div>
+    
+    {% include "_bottom_nav.html" %}
+    <script src="/static/js/app.js"></script>
+  </body>
+  </html>
+

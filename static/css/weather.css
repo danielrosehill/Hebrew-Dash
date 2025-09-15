@@ -1,0 +1,426 @@
+/* Weather-specific styles */
+
+/* Weather tabs */
+.weather-tabs {
+  display: flex;
+  border-bottom: 1px solid #252c40;
+  margin-bottom: 20px;
+}
+
+.weather-tab {
+  background: transparent;
+  border: none;
+  color: #9aa0a6;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+  flex: 1;
+  text-align: center;
+}
+
+.weather-tab:hover {
+  color: #d0d3db;
+  background: rgba(78, 134, 255, 0.1);
+}
+
+.weather-tab.active {
+  color: #4e86ff;
+  border-bottom-color: #4e86ff;
+  background: rgba(78, 134, 255, 0.1);
+}
+
+/* Tab content */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Hourly forecast with summary layout */
+.hourly-with-summary {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #252c40;
+  align-items: flex-start;
+}
+
+.hourly-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.hourly-main .label {
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.daily-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  max-width: 120px;
+  padding: 12px 8px;
+  background: rgba(78, 134, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(78, 134, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.daily-summary .weather-icon-lg {
+  font-size: 32px;
+  margin: 0 0 6px 0;
+}
+
+.daily-summary .weather-range {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Current weather horizontal layout */
+.current-weather-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.current-weather-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 200px;
+}
+
+.current-temp-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.current-weather-details {
+  flex: 1;
+}
+
+/* Weather sections within tabs */
+.current-weather-section,
+.today-forecast-section,
+.today-details-section,
+.today-minmax-section,
+.tomorrow-forecast-section,
+.tomorrow-details-section,
+.tomorrow-minmax-section,
+.air-quality-section,
+.hourly-section {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #252c40;
+}
+
+.current-weather-section:last-child,
+.today-forecast-section:last-child,
+.today-details-section:last-child,
+.today-minmax-section:last-child,
+.tomorrow-forecast-section:last-child,
+.tomorrow-details-section:last-child,
+.tomorrow-minmax-section:last-child,
+.air-quality-section:last-child,
+.hourly-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.weather-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  flex: 1;
+}
+
+.weather-icon {
+  font-size: 48px;
+  margin-bottom: 8px;
+  color: #4e86ff;
+}
+
+.weather-icon-lg {
+  font-size: 64px;
+  margin: 12px 0;
+  color: #4e86ff;
+}
+
+.weather-temp {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.unit {
+  font-size: 20px;
+  color: var(--muted);
+  margin-left: 2px;
+}
+
+.weather-desc {
+  font-size: 16px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 4px;
+}
+
+.weather-range {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.separator {
+  margin: 0 4px;
+  color: var(--muted);
+}
+
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.forecast-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 4px;
+  background: #1a2030;
+  border: 1px solid #252c40;
+  border-radius: 8px;
+}
+
+.forecast-day-header {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #d0d3db;
+}
+
+.forecast-day-temp {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 4px 0;
+}
+
+.forecast-day-icon {
+  font-size: 24px;
+  margin: 4px 0;
+  color: #4e86ff;
+}
+
+.hourly-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 8px;
+  padding: 4px 0;
+  margin-top: 4px;
+}
+
+.hourly-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 50px;
+  padding: 6px 3px;
+  background: #1a2030;
+  border: 1px solid #252c40;
+  border-radius: 6px;
+}
+
+.hourly-time {
+  font-size: 12px;
+  color: #d0d3db;
+  margin-bottom: 6px;
+}
+
+.hourly-icon {
+  font-size: 24px;
+  margin: 4px 0;
+  color: #4e86ff;
+}
+
+.hourly-temp {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Scrollbar styling */
+.hourly-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.hourly-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.hourly-scroll::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 3px;
+}
+
+.hourly-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Weather Icons Mapping */
+.wi-0 { content: "☀️"; } /* Clear sky */
+.wi-1 { content: "🌤️"; } /* Mainly clear */
+.wi-2 { content: "⛅"; } /* Partly cloudy */
+.wi-3 { content: "☁️"; } /* Overcast */
+.wi-45 { content: "🌫️"; } /* Fog */
+.wi-48 { content: "🌫️"; } /* Depositing rime fog */
+.wi-51 { content: "🌦️"; } /* Light drizzle */
+.wi-53 { content: "🌦️"; } /* Moderate drizzle */
+.wi-55 { content: "🌦️"; } /* Dense drizzle */
+.wi-56 { content: "🌨️"; } /* Light freezing drizzle */
+.wi-57 { content: "🌨️"; } /* Dense freezing drizzle */
+.wi-61 { content: "🌦️"; } /* Slight rain */
+.wi-63 { content: "🌧️"; } /* Moderate rain */
+.wi-65 { content: "🌧️"; } /* Heavy rain */
+.wi-66 { content: "🌨️"; } /* Light freezing rain */
+.wi-67 { content: "🌨️"; } /* Heavy freezing rain */
+.wi-71 { content: "❄️"; } /* Slight snow */
+.wi-73 { content: "❄️"; } /* Moderate snow */
+.wi-75 { content: "❄️"; } /* Heavy snow */
+.wi-77 { content: "❄️"; } /* Snow grains */
+.wi-80 { content: "🌦️"; } /* Slight rain showers */
+.wi-81 { content: "🌧️"; } /* Moderate rain showers */
+.wi-82 { content: "🌧️"; } /* Violent rain showers */
+.wi-85 { content: "🌨️"; } /* Slight snow showers */
+.wi-86 { content: "🌨️"; } /* Heavy snow showers */
+.wi-95 { content: "⛈️"; } /* Thunderstorm */
+.wi-96 { content: "⛈️"; } /* Thunderstorm with slight hail */
+.wi-99 { content: "⛈️"; } /* Thunderstorm with heavy hail */
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hourly-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hourly-scroll {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Day toggle buttons */
+.day-toggle {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.toggle-btn {
+  background: #1a2030;
+  border: 1px solid #252c40;
+  color: #d0d3db;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn:hover {
+  background: #252c40;
+  border-color: #4e86ff;
+}
+
+.toggle-btn.active {
+  background: #4e86ff;
+  border-color: #4e86ff;
+  color: white;
+}
+
+/* Enhanced hourly items */
+.hourly-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+  padding: 8px 6px;
+  background: #1a2030;
+  border: 1px solid #252c40;
+  border-radius: 8px;
+}
+
+.hourly-item.high-precipitation {
+  border-color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+}
+
+.hourly-precipitation {
+  font-size: 11px;
+  color: #4e86ff;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+.hourly-precipitation.high {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+.hourly-wind {
+  font-size: 10px;
+  color: #9aa0a6;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.wind-direction-arrow {
+  font-size: 12px;
+  transform-origin: center;
+}
+
+/* Min/Max display sections */
+.minmax-display {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 0;
+}
+
+.minmax-temps {
+  display: flex;
+  gap: 24px;
+}
+
+.temp-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.temp-item .sub {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.temp-item .metric {
+  font-size: 24px;
+  font-weight: 700;
+  color: #d0d3db;
+}

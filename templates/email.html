@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <a href="/settings" style="position:fixed; top:8px; right:12px; color:#9aa0a6; text-decoration:none">Settings</a>
+    <div id="grid" style="grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; gap: 20px;">
+      <section class="card" id="email-personal">
+        <div class="label">Personal Inbox</div>
+        <ul id="email-list-personal" class="list" style="max-height: calc(100vh - 120px); overflow-y: auto;"></ul>
+      </section>
+      <section class="card" id="email-business">
+        <div class="label">Business Inbox</div>
+        <ul id="email-list-business" class="list" style="max-height: calc(100vh - 120px); overflow-y: auto;"></ul>
+      </section>
+    </div>
+
+    {% include "_bottom_nav.html" %}
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>
+

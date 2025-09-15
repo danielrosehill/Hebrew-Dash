@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="/static/css/weather.css" />
+  </head>
+  <body data-page="weather">
+    <a href="/settings" style="position:fixed; top:8px; right:12px; color:#9aa0a6; text-decoration:none">Settings</a>
+    <div id="grid">
+      <!-- Weather Card with Tabs -->
+      <section id="weather-card" class="card">
+        <!-- Weather Tabs -->
+        <div class="weather-tabs">
+          <button id="today-tab" class="weather-tab active">Today</button>
+          <button id="tomorrow-tab" class="weather-tab">Tomorrow</button>
+          <button id="forecast-tab" class="weather-tab">7 Days</button>
+        </div>
+
+        <!-- Today Tab Content -->
+        <div id="today-content" class="tab-content active">
+          <!-- Hourly Forecast -->
+          <div class="hourly-section">
+            <div class="label">Hourly Temperature & Precipitation</div>
+            <div id="today-hourly-container" class="hourly-scroll"></div>
+          </div>
+
+          <!-- Current Weather -->
+          <div class="current-weather-section">
+            <div class="label">Current Weather</div>
+            <div class="current-weather-row">
+              <div class="current-weather-main">
+                <div class="weather-icon" id="current-icon">--</div>
+                <div class="current-temp-info">
+                  <div class="weather-temp">
+                    <span id="current-temp">--</span><span class="unit">°C</span>
+                  </div>
+                  <div class="weather-desc" id="current-desc">--</div>
+                </div>
+              </div>
+              <div class="current-weather-details">
+                <div class="mini-grid">
+                  <div class="mini">
+                    <div class="sub">Feels Like</div>
+                    <div class="metric"><span id="feels-like">--</span><span class="unit">°C</span></div>
+                  </div>
+                  <div class="mini">
+                    <div class="sub">Humidity</div>
+                    <div class="metric"><span id="humidity">--</span><span class="unit">%</span></div>
+                  </div>
+                  <div class="mini">
+                    <div class="sub">Wind</div>
+                    <div class="metric"><span id="wind">--</span><span class="unit">km/h</span> <span id="wind-direction">--</span></div>
+                  </div>
+                  <div class="mini">
+                    <div class="sub">Pressure</div>
+                    <div class="metric"><span id="pressure">--</span><span class="unit">hPa</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Today Min/Max -->
+          <div class="today-minmax-section">
+            <div class="label">Today Min/Max</div>
+            <div class="minmax-display">
+              <div class="weather-icon-lg" id="today-icon">--</div>
+              <div class="minmax-temps">
+                <div class="temp-item">
+                  <div class="sub">High</div>
+                  <div class="metric"><span id="today-high">--</span><span class="unit">°C</span></div>
+                </div>
+                <div class="temp-item">
+                  <div class="sub">Low</div>
+                  <div class="metric"><span id="today-low">--</span><span class="unit">°C</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Today's Details -->
+          <div class="today-details-section">
+            <div class="label">Today's Details</div>
+            <div class="mini-grid">
+              <div class="mini">
+                <div class="sub">UV Index</div>
+                <div class="metric"><span id="uv-index">--</span></div>
+              </div>
+              <div class="mini">
+                <div class="sub">Precipitation</div>
+                <div class="metric"><span id="precipitation">--</span><span class="unit">mm</span></div>
+              </div>
+              <div class="mini">
+                <div class="sub">Sunrise</div>
+                <div class="metric"><span id="sunrise">--</span></div>
+              </div>
+              <div class="mini">
+                <div class="sub">Sunset</div>
+                <div class="metric"><span id="sunset">--</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Air Quality (Today only) -->
+          <div class="air-quality-section">
+            <div class="label">Air Quality</div>
+            <div class="mini-grid">
+              <div class="mini">
+                <div class="sub">PM2.5</div>
+                <div class="metric"><span id="pm25">—</span> <span id="pm25-desc" class="badge">—</span></div>
+              </div>
+              <div class="mini">
+                <div class="sub">AQI</div>
+                <div class="metric"><span id="aqi">—</span> <span id="aqi-desc" class="badge">—</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tomorrow Tab Content -->
+        <div id="tomorrow-content" class="tab-content">
+          <!-- Hourly Forecast -->
+          <div class="hourly-section">
+            <div class="label">Hourly Temperature & Precipitation</div>
+            <div id="tomorrow-hourly-container" class="hourly-scroll"></div>
+          </div>
+
+          <!-- Tomorrow Min/Max -->
+          <div class="tomorrow-minmax-section">
+            <div class="label">Tomorrow Min/Max</div>
+            <div class="minmax-display">
+              <div class="weather-icon-lg" id="tomorrow-icon">--</div>
+              <div class="minmax-temps">
+                <div class="temp-item">
+                  <div class="sub">High</div>
+                  <div class="metric"><span id="tomorrow-high">--</span><span class="unit">°C</span></div>
+                </div>
+                <div class="temp-item">
+                  <div class="sub">Low</div>
+                  <div class="metric"><span id="tomorrow-low">--</span><span class="unit">°C</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tomorrow's Details -->
+          <div class="tomorrow-details-section">
+            <div class="label">Tomorrow's Details</div>
+            <div class="mini-grid">
+              <div class="mini">
+                <div class="sub">UV Index</div>
+                <div class="metric"><span id="tomorrow-uv-index">--</span></div>
+              </div>
+              <div class="mini">
+                <div class="sub">Precipitation</div>
+                <div class="metric"><span id="tomorrow-precipitation">--</span><span class="unit">mm</span></div>
+              </div>
+              <div class="mini">
+                <div class="sub">Sunrise</div>
+                <div class="metric"><span id="tomorrow-sunrise">--</span></div>
+              </div>
+              <div class="mini">
+                <div class="sub">Sunset</div>
+                <div class="metric"><span id="tomorrow-sunset">--</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7-Day Forecast Tab Content -->
+        <div id="forecast-content" class="tab-content">
+          <div class="label">7-Day Forecast</div>
+          <div id="forecast-container" class="forecast-grid"></div>
+        </div>
+      </section>
+    </div>
+    {% include "_bottom_nav.html" %}
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/weather.js"></script>
+  </body>
+</html>
+
