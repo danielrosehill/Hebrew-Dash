@@ -1,4 +1,4 @@
-# Hebrew Dashboard (Zmanim, Email, Cals, And More!)
+# Productivity Dashboard With Hebrew Cal Times (Zmanim, Email, Cals, And More!)
 
 A personalized dashboard application that displays Jewish/Hebrew calendar information, weather, news, email, and calendar data. This dashboard is designed for users who want to keep track of Hebrew dates, Zmanim (prayer times), Shabbat times, Israeli holidays, and integrate their Google services.
 
