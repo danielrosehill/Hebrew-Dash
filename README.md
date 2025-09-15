@@ -15,6 +15,56 @@ A personalized dashboard application that displays Jewish/Hebrew calendar inform
 - **News**: Israeli news feed from Google News
 - **Responsive Design**: Works on desktop and mobile devices
 
+## Screenshots
+
+### Application Pages
+
+<div align="center">
+
+#### Home Dashboard
+![Home Dashboard](screenshots/1.png)
+
+#### Email Page
+![Email Page](screenshots/tabs/email-page.png)
+
+#### Calendar Page
+![Calendar Page](screenshots/tabs/cal-page.png)
+
+#### Zmanim Page
+![Zmanim Page](screenshots/tabs/zmanim.png)
+
+#### News Page
+![News Page](screenshots/tabs/news.png)
+
+#### Weather Page
+![Weather Page](screenshots/tabs/weather.png)
+
+#### Settings Page
+![Settings Page](screenshots/tabs/settings.png)
+
+</div>
+
+### Home Screen Widgets
+
+<div align="center">
+
+#### Clock Widget
+![Clock Widget](screenshots/widgets/homescreen/clock.png)
+
+#### Weather Widget
+![Weather Widget](screenshots/widgets/homescreen/home-weather.png)
+
+#### Zmanim Widget
+![Zmanim Widget](screenshots/widgets/homescreen/home-zmanim.png)
+
+#### Calendar Widget
+![Calendar Widget](screenshots/widgets/homescreen/cal.png)
+
+#### Holidays Widget
+![Holidays Widget](screenshots/widgets/homescreen/holidays.png)
+
+</div>
+
 ## Setup Instructions
 
 ### 1. Prerequisites
