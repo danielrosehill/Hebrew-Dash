@@ -1,4 +1,4 @@
-# Hebrew Dashboard
+# Hebrew Dashboard (Zmanim, Email, Cals, And More!)
 
 A personalized dashboard application that displays Jewish/Hebrew calendar information, weather, news, email, and calendar data. This dashboard is designed for users who want to keep track of Hebrew dates, Zmanim (prayer times), Shabbat times, Israeli holidays, and integrate their Google services.
 
@@ -43,6 +43,12 @@ A personalized dashboard application that displays Jewish/Hebrew calendar inform
 ![Settings Page](screenshots/tabs/settings.png)
 
 </div>
+
+### UI Elements
+
+Nav Bar
+
+![alt text](screenshots/ui-elements/nav-bar.png)
 
 ### Home Screen Widgets
 
